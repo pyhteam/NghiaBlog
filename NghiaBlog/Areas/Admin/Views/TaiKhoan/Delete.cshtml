@@ -1,0 +1,58 @@
+﻿@model NghiaBlog.Models.account
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        Thông tin xóa
+    </div>
+    <div class="card-body">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.username)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.username)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.password)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.password)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.displayname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.displayname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.create_at)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.create_at)
+            </dd>
+
+        </dl>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Xóa" class="btn btn-default" /> |
+                @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-danger btn-sm" })
+            </div>
+        }
+    </div>
+</div>
+

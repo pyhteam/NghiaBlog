@@ -1,0 +1,70 @@
+﻿@model NghiaBlog.Models.account
+@{
+    Layout = null;
+}
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<style>
+    .login-popup-heading > h4 {
+        color: #258b47;
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    .new_reg_popup, .new_login_popup {
+        border-radius: 2px;
+        min-height: 332px;
+        width: 500px;
+        margin: 0px auto;
+    }
+
+    .login-popup-btn {
+        background: #258b47;
+        border: none;
+        border-radius: 25px;
+        color: #fff;
+        display: block;
+        font-size: 18px;
+        height: 38px;
+        line-height: 28px;
+        margin: 20px auto 5px;
+        width: 150px;
+        -webkit-transition: all 700ms ease;
+        -moz-transition: all 700ms ease;
+        -ms-transition: all 700ms ease;
+        -o-transition: all 700ms ease;
+    }
+
+    a {
+        color: #258b47;
+        font-size: 18px;
+    }
+</style>
+<div class="login-popup-wrap new_login_popup">
+    <div class="login-popup-heading text-center">
+        <h4><i class="fa fa-lock" aria-hidden="true"></i> Login </h4>
+    </div>
+    <!--<form accept-charset="utf-8" method="post" action="">-->
+    @using (Html.BeginForm("Login", "TrangChu", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.ValidationMessageFor(a => a.username)
+            <input type="text" class="form-control" id="user_id" placeholder="Tên tài khoản" name="username">
+        </div>
+        <div class="form-group">
+            @Html.ValidationMessageFor(a => a.password)
+            <input type="password" class="form-control" id="password" placeholder="Mật khẩu" name="password">
+        </div>
+        <button type="submit" class="btn btn-default login-popup-btn" name="submit" value="1">Login</button>
+    }
+    <div class="form-group text-center">
+        <a class="pwd-forget" href="javascript:void(0)" id="open_forgotPassword">Forget Password</a>
+    </div>
+    <div class="text-center">Not registered yet?<a href="#">click here</a></div>
+</div>
